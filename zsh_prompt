@@ -1,0 +1,101 @@
+setopt PROMPT_SUBST
+PROMPT=""
+RPROMPT="" # For some reason you need this for the keymap mode indicator to work
+
+function color {
+	if [[ $# -eq 0 ]]; then
+		echo '%{\e[0m%}'
+	else
+		echo '%{\e[38;5;'$1'm%}'
+	fi
+}
+
+# Generate the git repo data
+function gen_git_ps {
+	local git_status=""
+	local git_branch=""
+
+	# Get git data if the current directory is or is inside of a git repository
+	if [[ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") -eq '0' ]]; then
+		# If the current directory is not inside of the .git directory
+		if [[ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]]; then
+			# Update staging area for accurate information
+			git update-index --really-refresh -q &>/dev/null
+
+			# Check for uncommitted staged changes
+			if ! $(git diff --quiet --ignore-submodules --cached); then
+				git_status+="+"
+			fi
+
+			# Check for unstaged changes
+			if ! $(git diff-files --quiet --ignore-submodules --); then
+				git_status+="!"
+			fi
+
+			# Check for untracked files
+			if [[ -n "$(git ls-files --others --exclude-standard)" ]]; then
+				git_status+="?"
+			fi
+
+			# Check for stashed files
+			if $(git rev-parse --verify refs/stash &>/dev/null); then
+				git_status+="$"
+			fi
+		fi
+
+		# Set blank git_status to a space
+		if [[ -z $git_status ]]; then
+			git_status=""
+		else
+			git_status=" "$git_status
+		fi
+
+		# Get git_branch name or the SHA for the latest commit
+		git_branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || git rev-parse --short HEAD 2> /dev/null || echo 'unknown')"
+	fi
+
+	if [ -n "$git_branch" ]; then
+		git_ps="%{%F{green}%}<${git_branch}${git_status}>%{%F{none}%} "
+		git_ps_len=$((3 + ${#git_branch} + ${#git_status}))
+	else
+		git_ps=""
+		git_ps_len=0
+	fi
+
+	echo git_ps
+}
+
+# Generate the git repo data and display keymap mode indicator
+function zle-line-init {
+	PROMPT=" %1~ $(color 19)>$(color) "
+
+	zle-keymap-select
+}
+
+# Update the time every second
+#TRAPALRM() {
+	#zle reset-prompt
+#}
+
+# Indicate whether zle is in insert mode or normal mode
+#TMOUT=1
+function zle-keymap-select {
+	normal=$(echo "$(color 18)[NORMAL]$(color)")
+	insert=$(echo "$(color 18)[INSERT]$(color)")
+	RPROMPT="${${KEYMAP/vicmd/$normal}/(main|viins)/$insert}"
+
+	zle reset-prompt
+}
+
+# Remove the keymap mode indicator when enter is pressed
+function zle-line-finish {
+	RPROMPT=""
+	zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-line-finish
+zle -N zle-keymap-select
+
+# Make it snappy
+export KEYTIMEOUT=1

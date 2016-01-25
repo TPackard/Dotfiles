@@ -1,0 +1,15 @@
+#!/usr/bin/zsh
+# A simple program that tests the terminal color scheme
+
+autoload colors
+colors
+
+echo " 8 COLOR"
+for color in black red green yellow blue magenta cyan white; do
+	echo $fg[$color] normal $fg_bold[$color] bold $reset_color $bg[$color] background $reset_color $color
+done
+
+echo "\n 256 COLOR"
+for color in $(seq 0 21); do
+	echo -e "\e[38;5;"$color"m Color $color \e[0m"
+done
