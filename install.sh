@@ -14,8 +14,8 @@ read homd_dir
 [[ -z $home_dir ]] && home_dir=$HOME
 
 dot_dir="$(cd "$(dirname "$0")" && pwd)"
-mkdir -p home_dir/bin
-mkdir -p home_dir/.config
+mkdir -p $home_dir/bin
+mkdir -p $home_dir/.config
 
 # Link dotfiles
 link() {
