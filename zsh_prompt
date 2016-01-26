@@ -62,7 +62,7 @@ function gen_git_ps {
 		git_ps_len=0
 	fi
 
-	echo git_ps
+	echo $git_ps
 }
 
 # Generate the git repo data and display keymap mode indicator
