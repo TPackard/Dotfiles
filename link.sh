@@ -2,7 +2,7 @@
 # Links the files into the correct places
 
 # Set options for linking
-default_ln_opts="-fisv"
+default_ln_opts="-fnsv"
 echo -n "Enter ln flags (default $default_ln_opts): "
 read ln_opts
 [[ -z $ln_opts ]] && ln_opts=$default_ln_opts
@@ -26,8 +26,11 @@ for file in bin/*; do
 	link $file $home_dir/$file
 done
 
-for file in config/*; do
-	link $file $home_dir/.$file
+for dir in config/*; do
+	for file in $dir/*; do
+		echo $file
+		link $file "$home_dir/.$file"
+	done
 done
 
 for file in dircolors vimrc xinitrc Xresources zlogin zsh_prompt zshrc; do
@@ -35,8 +38,12 @@ for file in dircolors vimrc xinitrc Xresources zlogin zsh_prompt zshrc; do
 done
 
 # Install firefox theme
-cd $dot_dir/arc-firefox-theme
-./autogen.sh --prefix=/usr --disable-light --disable-dark
-sudo make install
-sudo make clean
-cd -
+echo -n "Install modified Arc Firefox theme? (y/N): "
+read install_arc
+if [[ install_arc == "y" ]]; then
+	cd $dot_dir/arc-firefox-theme
+	./autogen.sh --prefix=/usr --disable-light --disable-dark
+	sudo make install
+	sudo make clean
+	cd -
+fi
