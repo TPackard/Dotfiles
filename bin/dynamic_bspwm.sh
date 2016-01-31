@@ -59,8 +59,8 @@ bspc control --subscribe | while read line; do
 	if [[ "${line: -1}" == "M" ]]; then
 		bspc config --desktop focused window_gap 12
 	else
-		#bspc config --desktop focused window_gap 24
-		$(dynamic_gaps)
+		bspc config --desktop focused window_gap 24
+		#$(dynamic_gaps)
 	fi
 
 	free_desktops=$(grep -oi ":f" <<< "$line" | wc -l) # Number of free desktops
