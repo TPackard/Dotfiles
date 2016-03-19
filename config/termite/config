@@ -11,7 +11,6 @@ cursor          = #e0e0e0
 background      = #2C3E50
 
 # 16 color space
-# color0 can be #34495E
 color0  = #2C3E50
 color1  = #E74C3C
 color2  = #2ECC71

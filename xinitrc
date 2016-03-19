@@ -8,6 +8,8 @@ hsetroot -solid '#2C3E50'
 #compton -b --sw-opti &
 exec runbar.sh &
 exec rofi &
-sxhkd &
+#sxhkd &
+#exec $WM_SCRIPTS/core.sh
+sxhkd -c ~/.config/sxhkd/sxhkdrc.bswpm &
 exec bspwm &
 exec ~/bin/dynamic_bspwm.sh

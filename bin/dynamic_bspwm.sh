@@ -55,11 +55,18 @@ function focus_index() {
 
 # Main loop
 bspc control --subscribe | while read line; do
-	# If in monocle mode, shrink gap to 12 pixels to save space
 	if [[ "${line: -1}" == "M" ]]; then
-		bspc config --desktop focused window_gap 12
+		bspc config --desktop focused window_gap 14
 	else
-		bspc config --desktop focused window_gap 24
+		bspc config --desktop focused window_gap 12
+	fi
+
+	if [[ "$(bspc query --desktop focused --windows | wc -l)" == "1" ]]; then
+		bspc config focused_border_color "#2C3E50"
+		bspc config active_border_color "#2C3E50"
+	else
+		bspc config focused_border_color "#34495E"
+		bspc config active_border_color "#34495E"
 		#$(dynamic_gaps)
 	fi
 

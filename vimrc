@@ -21,6 +21,7 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'neovimhaskell/haskell-vim'
 
 Plug 'jelera/vim-javascript-syntax'
+Plug 'digitaltoad/vim-jade'
 
 Plug 'chriskempson/base16-vim'
 
