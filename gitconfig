@@ -1,0 +1,7 @@
+[core]
+	excludesfile = /home/tyler/.gitignore
+[user]
+	email = tyler.packard86@gmail.com
+	name = Tyler Packard
+[push]
+	default = simple
