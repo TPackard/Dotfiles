@@ -18,7 +18,6 @@ call plug#begin()
 " Plug 'cespare/vim-toml'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tikhomirov/vim-glsl'
-Plug 'neovimhaskell/haskell-vim'
 
 Plug 'jelera/vim-javascript-syntax'
 Plug 'digitaltoad/vim-jade'

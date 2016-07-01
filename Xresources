@@ -10,20 +10,11 @@ Xft.dpi: 192
 rofi.lines: 8
 rofi.font: Inconsolata 20
 ! Colors
-rofi.bc: #34495E
-rofi.fg: #E0E0E0
-rofi.bg: #2C3E50
-rofi.bgalt: #2C3E50
-rofi.hlfg: #ECF0F1
-rofi.hlbg: #3498DB
-rofi.fg-active: #2ECC71
-rofi.bg-active: #ECF0F1
-rofi.fg-urgent: #E74C3C
-rofi.bg-urgent: #ECF0F1
-rofi.hlfg-active: #E0E0E0
-rofi.hlbg-active: #2ECC71
-rofi.hlfg-urgent: #E0E0E0
-rofi.hlbg-urgent: #E74C3C
+rofi.color-enabled: true
+rofi.color-window: #2c3e50, #34495e, #34495e
+rofi.color-normal: #2c3e50, #e0e0e0, #2c3e50, #3498db, #2c3e50
+rofi.color-active: #2c3e50, #2ecc71, #2c3e50, #2ecc71, #e0e0e0
+rofi.color-urgent: #2c3e50, #e74c3c, #2c3e50, #e74c3c, #e0e0e0
 ! Options
 rofi.opacity: 100
 rofi.sidebar-mode: true
@@ -31,7 +22,7 @@ rofi.separator-style: solid
 ! Commands
 rofi.ssh-command: {terminal} -e "{ssh-client} {host}"
 ! Keybindings
-rofi.key-run: mod4+space
+rofi.key-run: SuperR+space
 rofi.kb-mode-next: Right
 rofi.kb-mode-previous: Left
-rofi.kb-cancel: Escape,mod4+space
+rofi.kb-cancel: Escape
