@@ -31,11 +31,6 @@ bspc config top_padding 32
 
 bspc monitor -d I
 
-bspc rule -a Gimp follow=on floating=on
-bspc rule -a mplayer2 floating=on
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
-
 # Set non-bspwm settings
 xrdb ~/.Xresources
 xsetroot -cursor_name left_ptr& # Set the default cursor to pointer instead of X
@@ -44,6 +39,5 @@ hsetroot -solid '#2C3E50'
 # Start dependencies
 #compton -b --sw-opti &
 exec /home/tyler/bin/runbar.sh &
-exec rofi &
 sxhkd -c /home/tyler/.config/sxhkd/sxhkdrc.bswpm &
 exec /home/tyler/bin/dynamic_bspwm.sh

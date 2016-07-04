@@ -54,14 +54,14 @@ volume() {
 
 # Returns the time in HH:MM AM/PM
 clock() {
-	local time_str=$(date "+%{F-}%-l%{F${dull}}:%{F-}%M %{F${dull}}%p")
+	local time_str="$(date "+%{F-}%-l%{F${dull}}:%{F-}%M %{F${dull}}%p")"
 	echo -n "$time_str"
 }
 
 # Shows battery charge state and percentage
 battery() {
-	local info=$(acpi -b)
-	local percent=$(echo ${info} | cut -d, -f2 | cut -d "%" -f1)
+	local info="$(acpi -b)"
+	local percent="$(echo ${info} | cut -d, -f2 | cut -d "%" -f1)"
 
 	# Set dot green for full, yellow for charging, and red for discharging
 	local state=${dull}
