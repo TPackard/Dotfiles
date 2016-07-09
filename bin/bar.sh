@@ -1,6 +1,7 @@
 #!/usr/bin/zsh
 
 # Colors
+true_black="#000000"
 black="#2C3E50"
 light_black="#34495E"
 dark_gray="#95A5A6"
@@ -32,7 +33,7 @@ desktops() {
 		#local space=" "
 		#local after_space=""
 		#[[ "$after_select" = true ]] && space="" && after_select=false
-		[[ "$i" == "$(bspc query -D --desktop focused)" ]] && color=${green} #&& background=${blue} && color=${white} && after_space=" " && after_select=true
+		[[ "$i" == "$(bspc query -D --desktop focused)" ]] && color=${blue} #&& background=${blue} && color=${white} && after_space=" " && after_select=true
 		desk_str+=" %{F${color}}•"
 	done
 
@@ -83,7 +84,8 @@ battery() {
 # Redraw the bar when the interrupt signal is sent. This allows button clicks to automatically redraw the bar
 trap redraw SIGINT
 redraw() {
-	echo "$(desktops)%{r}$(volume)%{F${subtle}}| $(battery) %{F${subtle}}| $(clock)%{F-} "
+	#                                          |                         |
+	echo "$(desktops)%{r}$(volume)%{F${subtle}}  $(battery) %{F${subtle}}  $(clock)%{F-} "
 }
 
 while true; do

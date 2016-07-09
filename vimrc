@@ -1,4 +1,5 @@
 set encoding=utf-8
+set nocompatible
 autocmd!
 
 " Start Plug
@@ -27,13 +28,6 @@ Plug 'chriskempson/base16-vim'
 call plug#end()
 filetype plugin indent on
 
-" Plugin configuration
-" let g:airline_powerline_fonts=1
-" let g:airline#extensions#bufferline=1
-" let g:airline#extensions#hunks#enabled=1
-" let g:airline#extensions#tabline#enabled=1
-set laststatus=2
-
 set autoread
 
 " Sessions
@@ -48,12 +42,22 @@ syntax on
 set background=dark
 let base16colorspace=256
 colorscheme base16-flat
-set cursorline
+"set cursorline
+
+set laststatus=2
+
+" Configure ui colors
+hi StatusLine ctermbg=0
+hi StatusLineNC ctermbg=0
+hi TabLine ctermbg=0
+hi TabLineFill ctermbg=0
+hi TabLineSel ctermbg=0
+hi VertSplit ctermbg=18 ctermfg=18
 
 " Invisibles
 set listchars=tab:▸\	,eol:¬
 
-set number
+"set number
 set nowrap
 
 set hidden
@@ -68,6 +72,32 @@ set hlsearch
 
 " Default to list  mode in explorer
 let g:netrw_liststyle=1
+
+" Disable scrolling, because for some reason scrolling maps to arrow keys
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
+inoremap  <S-Up>     <NOP>
+inoremap  <S-Down>   <NOP>
+inoremap  <S-Left>   <NOP>
+inoremap  <S-Right>  <NOP>
+noremap   <S-Up>     <NOP>
+noremap   <S-Down>   <NOP>
+noremap   <S-Left>   <NOP>
+noremap   <S-Right>  <NOP>
+inoremap  <C-Up>     <NOP>
+inoremap  <C-Down>   <NOP>
+inoremap  <C-Left>   <NOP>
+inoremap  <C-Right>  <NOP>
+noremap   <C-Up>     <NOP>
+noremap   <C-Down>   <NOP>
+noremap   <C-Left>   <NOP>
+noremap   <C-Right>  <NOP>
 
 " set sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize"
 

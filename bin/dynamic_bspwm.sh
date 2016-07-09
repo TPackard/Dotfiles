@@ -5,14 +5,13 @@
 # darndestthing.com/bspwm gym
 
 # Dynamically change gaps based on the number of windows in the desktop.
-# Maximum 48 pixels, minimum 24 pixels. The gap changes by 12 pixels for
+# Maximum 96 pixels, minimum 24 pixels. The gap changes by 24 pixels for
 # every window added
 function dynamic_gaps() {
-	X=$(echo "48 * 0.25 / 0.282" | bc)
-	W=$(bspc query --desktop focused --nodes | wc -l)
-	G=$(echo "($X + 12) - ($W - 1) * 12" | bc)
+	W=$(( ($(bspc query -d focused -N | wc -l) + 1) / 2 ))
+	G=$(( 96 - (W - 1) * 24 ))
 	[[ $G -lt 24 ]] && G=24
-	bspc config --desktop focused window_gap $G
+	bspc config -d focused window_gap $G
 }
 
 # Generates a random 32 char hash for unique desktop names
@@ -55,20 +54,21 @@ function focus_index() {
 }
 
 # Main loop
+IFS=":"
 bspc subscribe | while read line; do
-	if [[ "${line: -1}" == "M" ]]; then
-		bspc config --desktop focused window_gap 14
+	status_arr=(${$(bspc wm -g)})
+	if [[ $status_arr[-3] == "LM" ]]; then # Monocle
+		bspc config --desktop focused window_gap 0
 	else
-		bspc config --desktop focused window_gap 12
+		$(dynamic_gaps)
 	fi
 
-	if [[ "$(bspc query --desktop focused --nodes | wc -l)" == "1" ]]; then
+	if [[ "$(bspc query -d focused -N | wc -l)" == "1" ]]; then # Only one node in focused desktop
 		bspc config focused_border_color "#2C3E50"
 		bspc config active_border_color "#2C3E50"
 	else
 		bspc config focused_border_color "#34495E"
 		bspc config active_border_color "#34495E"
-		#$(dynamic_gaps)
 	fi
 
 	free_desktops=$(grep -oi ":f" <<< "$line" | wc -l) # Number of free desktops

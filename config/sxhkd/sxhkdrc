@@ -87,7 +87,7 @@ super + Return
 	gnome-terminal
 
 super + space
-	rofi -show run
+	zsh -c "rofi -show run"
 
 # make sxhkd reload its configuration files:
 super + Escape

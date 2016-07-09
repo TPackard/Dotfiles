@@ -16,7 +16,7 @@ compinit
 XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CONFIG_HOME
 
-export PATH="$PATH:$HOME/bin:$HOME/.gem/ruby/2.3.0/bin"
+export PATH="$PATH:$HOME/bin"
 
 # Use vi keybindings for zsh
 bindkey -v
@@ -34,8 +34,7 @@ eval $(dircolors ~/.dircolors)
 
 # Aliases
 alias ssh='TERM=xterm-256color ssh'
-alias brightness='sudo tee /sys/class/backlight/acpi_video0/brightness <<<'
-alias ibrightness='sudo tee /sys/class/backlight/intel_backlight/brightness <<<'
+alias brightness='sudo tee /sys/class/backlight/intel_backlight/brightness <<<'
 
 # Include custom prompt
 source ~/.zsh_prompt

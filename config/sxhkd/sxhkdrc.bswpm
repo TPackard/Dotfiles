@@ -5,17 +5,17 @@
 super + alt + Escape
 	bspc quit
 
-super + w
-	bspc node -c
+super + {_,shift + }w
+	bspc node -{c,k}
 
-super + t
+super + m
 	bspc desktop -l next
 
-super + b
-	bspc desktop -B
+super + y
+	bspc query -N -n focused.automatic && bspc node -n last.!automatic || bspc node last.leaf -n focused
 
-super + {s,f}
-	bspc node -t {floating,fullscreen}
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 super + {grave,Tab}
 	bspc {node,desktop} -f last
@@ -28,41 +28,44 @@ super + {o,i}
 	bspc node {older,newer} -f; \
 	bspc wm --record-history on
 
-super + y
-	bspc node -w last.manual
-
 super + m
 	bspc node -s biggest
 
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
 super + {_,shift + }c
 	bspc node -f {next,prev}
-
-super + {comma,period}
-	bspc desktop -C {backward,forward}
 
 super + bracket{left,right}
 	bspc desktop -f {prev,next}; /home/tyler/bin/redrawbar.sh
 
-super + shift + bracket{left,right}
-	bspc desktop -s {prev,next}; /home/tyler/bin/redrawbar.sh
+super + shift + bracketleft
+	bspc desktop -s prev; bspc desktop -f prev; /home/tyler/bin/redrawbar.sh
+
+super + shift + bracketright
+	bspc desktop -s next; bspc desktop -f next; /home/tyler/bin/redrawbar.sh
 
 super + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 
-super + ctrl + {_,shift + }space
-	bspc {node -p cancel,desktop -c}
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+super + ctrl + space
+	bspc node -p cancel
+
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 super + alt + {h,j,k,l}
 	bspc node {@west -r -10,@south -r +10,@north -r -10,@east -r +10}
 
 super + alt + shift + {h,j,k,l}
 	bspc node {@east -r -10,@north -r +10,@south -r -10,@west -r +10}
-
-super + ctrl + {1-9}
-	bspc node -r 0.{1-9}
 
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} ^{1-9,10}; /home/tyler/bin/redrawbar.sh
@@ -90,7 +93,7 @@ super + shift + Return
 	cool-retro-term
 
 super + space
-	rofi -show run
+	zsh -c "rofi -show run"
 
 # make sxhkd reload its configuration files:
 super + Escape

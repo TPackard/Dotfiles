@@ -4,7 +4,8 @@ Xft.hinting: true
 Xft.rgba: rgb
 Xft.hintstyle: hintfull
 Xft.dpi: 192
-! Xcursor.size: 12
+Xcursor.theme: Breeze
+Xcursor.size: 24
 
 ! Rofi
 rofi.lines: 8
