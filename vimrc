@@ -68,7 +68,7 @@ set splitright
 set splitbelow
 
 set incsearch
-set hlsearch
+"set hlsearch
 
 " Default to list  mode in explorer
 let g:netrw_liststyle=1
