@@ -41,13 +41,13 @@ super + {_,shift + }c
 	bspc node -f {next,prev}
 
 super + bracket{left,right}
-	bspc desktop -f {prev,next}; /home/tyler/bin/redrawbar.sh
+	bspc desktop -f {prev,next}
 
 super + shift + bracketleft
-	bspc desktop -s prev; bspc desktop -f prev; /home/tyler/bin/redrawbar.sh
+	bspc desktop -s prev; bspc desktop -f prev
 
 super + shift + bracketright
-	bspc desktop -s next; bspc desktop -f next; /home/tyler/bin/redrawbar.sh
+	bspc desktop -s next; bspc desktop -f next
 
 super + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
@@ -68,7 +68,7 @@ super + alt + shift + {h,j,k,l}
 	bspc node {@east -r -10,@north -r +10,@south -r -10,@west -r +10}
 
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} ^{1-9,10}; /home/tyler/bin/redrawbar.sh
+	bspc {desktop -f,node -d} ^{1-9,10}
 
 super + {minus,equal}
 	/home/tyler/bin/metadata.sh bspwm gap_width "$(($(/home/tyler/bin/metadata.sh bspwm gap_width) {-,+} 4))"; /home/tyler/bin/resize_desktops.sh
