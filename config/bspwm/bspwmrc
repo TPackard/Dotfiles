@@ -39,6 +39,6 @@ feh --bg-fill ~/.wallpapers/mountains.jpg
 
 # Start dependencies
 #compton -b --sw-opti &
-exec /home/tyler/bin/runbar.sh &
+exec yabar &
 sxhkd &
 exec /home/tyler/bin/dynamic_bspwm.sh

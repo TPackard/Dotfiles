@@ -36,14 +36,3 @@ done
 for file in dircolors vimrc xinitrc Xresources zlogin zsh_prompt zshrc; do
 	link $file $home_dir/.$file
 done
-
-# Install firefox theme
-echo -n "Install modified Arc Firefox theme? (y/N): "
-read install_arc
-if [[ install_arc == "y" ]]; then
-	cd $dot_dir/arc-firefox-theme
-	./autogen.sh --prefix=/usr --disable-light --disable-dark
-	sudo make install
-	sudo make clean
-	cd -
-fi
