@@ -4,16 +4,6 @@
 # windows in the desktop. Dynamic gaps based off of the
 # darndestthing.com/bspwm gym
 
-# Dynamically change gaps based on the number of windows in the desktop.
-# Maximum 96 pixels, minimum 24 pixels. The gap changes by 24 pixels for
-# every window added
-function dynamic_gaps() {
-	W=$(( ($(bspc query -d focused -N | wc -l) + 1) / 2 ))
-	G=$(( 96 - (W - 1) * 24 ))
-	[[ $G -lt 24 ]] && G=24
-	bspc config -d focused window_gap $G
-}
-
 # Generates a random 32 char hash for unique desktop names
 function hash() {
 	#echo $(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
@@ -60,7 +50,8 @@ bspc subscribe | while read line; do
 	if [[ $status_arr[-3] == "LM" ]]; then # Monocle
 		bspc config --desktop focused window_gap 0
 	else
-		$(dynamic_gaps)
+		#dynamic_gaps
+		/home/tyler/bin/resize_desktops.sh
 	fi
 
 	if [[ "$(bspc query -d focused -N | wc -l)" == "1" ]]; then # Only one node in focused desktop
@@ -74,18 +65,15 @@ bspc subscribe | while read line; do
 	free_desktops=$(grep -oi ":f" <<< "$line" | wc -l) # Number of free desktops
 	if [[ $free_desktops -gt 1 ]]; then # If there are more than 1 free desktop, remove the extra desktops
 		bspc monitor -r $(bspc query -D -d 'next.!occupied')
-		/home/tyler/bin/redrawbar.sh
 	elif [[ $free_desktops -eq 1 ]] && [[ $(free_index) != $(num_desktops) ]]; then # If there is only 1 free desktop but it isn't at the end, move it to the end
 		if [[ $(focus_index) == $(free_index) ]]; then
 			bspc desktop -f next
 		fi
 
 		bspc desktop "^$(free_index)" -s next
-		/home/tyler/bin/redrawbar.sh
 	fi
 
 	if [[ $free_desktops -le 0 ]] && [[ ${#desktops[@]} -lt 10 ]]; then # If there are no free desktops, add one
 		bspc monitor -a $(hash)
-		/home/tyler/bin/redrawbar.sh
 	fi
 done
