@@ -28,9 +28,14 @@ autoload -U colors && colors
 export VISUAL="vim"
 export EDITOR="vim"
 
-# Use colored ls
+# Use colored commands
 alias ls='ls --color=auto'
+alias grep='grep --color=auto'
 eval $(dircolors ~/.dircolors)
+
+# Fix colors for terminals that only support setting 16 colors
+BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-flat.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # Aliases
 alias ssh='TERM=xterm-256color ssh'
@@ -46,3 +51,6 @@ export WM_SCRIPTS=/home/tyler/bin/wmutils
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
+
+export NVM_DIR="/home/tyler/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

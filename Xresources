@@ -1,4 +1,4 @@
-! General
+!!! GENERAL !!!
 Xft.antialias: true
 Xft.hinting: true
 Xft.rgba: rgb
@@ -7,7 +7,7 @@ Xft.dpi: 192
 Xcursor.theme: Breeze
 Xcursor.size: 24
 
-! Rofi
+!!! ROFI !!!
 rofi.lines: 8
 rofi.font: Inconsolata 20
 ! Colors
@@ -27,3 +27,40 @@ rofi.key-run: SuperR+space
 rofi.kb-mode-next: Right
 rofi.kb-mode-previous: Left
 rofi.kb-cancel: Escape
+
+!!! URXVT !!!
+URxvt.scrollBar: false
+URxvt.font: xft:basis33:size=12
+URxvt.cursorBlink: true
+URxvt.internalBorder: 36
+! Colors
+URxvt.foreground:  #E0E0E0
+URxvt.colorBD:     #E0E0E0
+URxvt.colorIT:     #E0E0E0
+URxvt.colorUL:     #E0E0E0
+URxvt.background:  #2C3E50
+URxvt.cursorColor: #E0E0E0
+! 16 color space
+URxvt.color0:  #2C3E50
+URxvt.color1:  #E74C3C
+URxvt.color2:  #2ECC71
+URxvt.color3:  #F1C40F
+URxvt.color4:  #3498DB
+URxvt.color5:  #9B59B6
+URxvt.color6:  #1ABC9C
+URxvt.color7:  #E0E0E0
+URxvt.color8:  #95A5A6
+URxvt.color9:  #E74C3C
+URxvt.color10: #2ECC71
+URxvt.color11: #F1C40F
+URxvt.color12: #3498DB
+URxvt.color13: #9B59B6
+URxvt.color14: #1ABC9C
+URxvt.color15: #ECF0F1
+! 256 color space
+URxvt.color16: #E67E22
+URxvt.color17: #BE643C
+URxvt.color18: #34495E
+URxvt.color19: #7F8C8D
+URxvt.color20: #BDC3C7
+URxvt.color21: #F5F5F5

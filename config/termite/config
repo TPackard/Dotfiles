@@ -1,5 +1,6 @@
 [options]
 font = basis33 12
+browser = /usr/share/firefox/firefox
 
 [colors]
 # Base16 Flat
