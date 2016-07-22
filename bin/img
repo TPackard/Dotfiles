@@ -1,0 +1,31 @@
+#!/usr/bin/zsh
+# Displays images in terminals. Must support w3m image drawing.
+# Original script by z3bra. Modified by Tyler Packard
+
+[[ -z "$1" ]] && echo "ERROR: No image provided!" && exit
+[[ ! -e "$1" ]] && echo "ERROR: Image does not exist!" && exit
+
+img_disp="/usr/lib/w3m/w3mimgdisplay"
+font_height=32 # Hardcoded, must be set manually
+font_width=15
+
+read width height <<< $(echo -e "5;$1" | $img_disp)
+
+max_width=$(($font_width * $COLUMNS))
+max_height=$(($font_height * ($LINES - 1)))
+
+if [[ $width -gt $max_width ]]; then
+	height=$(($height * $max_width / $width))
+	width=$max_width
+fi
+if [[ $height -gt $max_height ]]; then
+	width=$(($width * $max_height / $height))
+	height=$max_height
+fi
+
+# Find horizontal margin to center image horizontally
+horiz_margin=$((($max_width - $width) / 2))
+
+clear
+tput cup $(($height / $font_height)) 0
+echo -e "0;1;$horiz_margin;0;$width;$height;;;;;$1\n4;\n3;" | $img_disp
