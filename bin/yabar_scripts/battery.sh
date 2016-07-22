@@ -1,21 +1,21 @@
 #!/usr/bin/zsh
 
-source /home/tyler/bin/yabar_scripts/global.sh
+source ~/bin/yabar_scripts/global.sh
 
-info="$(acpi -b)"
-percent="$(echo ${info} | cut -d, -f2 | cut -d "%" -f1)"
+bat_status="$(cat /sys/class/power_supply/BAT0/status)"
+percent="$(cat /sys/class/power_supply/BAT0/capacity)"
 
 # Set dot green for full, yellow for charging, and red for discharging
 state=${green} #${dull}
-if [[ $info == *"Full"* ]]; then
+if [[ $bat_status == "Full" ]]; then
 	state=${green}
-elif [[ $info == *"Charging"* ]]; then
-	if [[ $info == *"100%"* ]]; then
-		state=${green}
+elif [[ $bat_status == "Charging" ]]; then
+	if [[ $bat_status == "100" ]]; then
+		state=${blue}
 	else
 		state=${yellow}
 	fi
-elif [[ $info == *"Discharging"* ]]; then
+elif [[ $bat_status == "Discharging" ]]; then
 	state=${red}
 fi
 

@@ -47,8 +47,8 @@ colorscheme base16-flat
 set laststatus=2
 
 " Configure ui colors
-hi StatusLine ctermbg=0
-hi StatusLineNC ctermbg=0
+hi StatusLine ctermbg=18
+hi StatusLineNC ctermbg=18
 hi TabLine ctermbg=0
 hi TabLineFill ctermbg=0
 hi TabLineSel ctermbg=0

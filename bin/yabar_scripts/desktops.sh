@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 
-source /home/tyler/bin/yabar_scripts/global.sh
+source ~/bin/yabar_scripts/global.sh
 
 desk_str=""
 
