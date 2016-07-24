@@ -28,6 +28,9 @@ autoload -U colors && colors
 export VISUAL="vim"
 export EDITOR="vim"
 
+# Alias `suvim` to run vim under superuser while maintaining the same preferences
+alias suvim='sudo -E vim'
+
 # Use colored commands
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'

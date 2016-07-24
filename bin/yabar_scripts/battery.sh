@@ -19,4 +19,4 @@ elif [[ $bat_status == "Discharging" ]]; then
 	state=${red}
 fi
 
-echo -n "    <span size='4096' rise='5120' color='${state}'></span> $percent<span weight='light' color='${dull}'>%</span>"
+echo -n "<span size='3072' rise='2048' color='${state}'></span> <span rise='1024'>$percent</span><span rise='1024' weight='light' color='${dull}'>%</span>"

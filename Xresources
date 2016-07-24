@@ -3,13 +3,13 @@ Xft.antialias: true
 Xft.hinting: true
 Xft.rgba: rgb
 Xft.hintstyle: hintfull
-Xft.dpi: 192
-Xcursor.theme: Breeze
-Xcursor.size: 24
+!Xft.dpi: 192
+!Xcursor.theme: Breeze
+!Xcursor.size: 24
 
 !!! ROFI !!!
 rofi.lines: 8
-rofi.font: Inconsolata 20
+rofi.font: Inconsolata 10
 ! Colors
 rofi.color-enabled: true
 rofi.color-window: #2c3e50, #34495e, #34495e
@@ -30,9 +30,9 @@ rofi.kb-cancel: Escape
 
 !!! URXVT !!!
 URxvt.scrollBar: false
-URxvt.font: xft:basis33:size=12
+URxvt.font: xft:RobotoMono:size=10
 URxvt.cursorBlink: true
-URxvt.internalBorder: 36
+URxvt.internalBorder: 20
 ! Colors
 URxvt.foreground:  #E0E0E0
 URxvt.colorBD:     #E0E0E0

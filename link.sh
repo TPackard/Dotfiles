@@ -27,10 +27,7 @@ for file in bin/*; do
 done
 
 for dir in config/*; do
-	for file in $dir/*; do
-		echo $file
-		link $file "$home_dir/.$file"
-	done
+	link $dir "$home_dir/.$dir"
 done
 
 for file in dircolors vimrc xinitrc Xresources zlogin zsh_prompt zshrc; do

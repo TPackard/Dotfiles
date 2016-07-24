@@ -71,7 +71,7 @@ super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} ^{1-9,10}
 
 super + {minus,equal}
-	/home/tyler/bin/metadata.sh bspwm gap_width "$(($(/home/tyler/bin/metadata.sh bspwm gap_width) {-,+} 4))"; /home/tyler/bin/resize_desktops.sh
+	/home/tyler/bin/metadata.sh bspwm gap_width "$(($(/home/tyler/bin/metadata.sh bspwm gap_width) {-,+} 2))"; /home/tyler/bin/resize_desktops.sh
 
 ~button1
 	bspc pointer -g focus
@@ -97,6 +97,18 @@ super + shift + Return
 
 super + space
 	zsh -c "rofi -show run"
+
+#
+# Sound controls
+#
+XF86Audio{Raise,Lower}Volume
+	amixer -q set Master 5%{+,-} unmute
+
+XF86AudioMute
+	amixer -q set Master toggle
+
+XF86AudioMicMute
+	amixer set Capture toggle
 
 # make sxhkd reload its configuration files:
 super + Escape

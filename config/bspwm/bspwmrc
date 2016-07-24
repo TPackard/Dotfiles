@@ -27,7 +27,7 @@ bspc config active_private_border_color "#3498DB"
 bspc config normal_private_border_color "#2C3E50"
 
 # Padding for lemonbar
-bspc config top_padding 32
+bspc config top_padding 16
 
 bspc monitor -d I
 
@@ -35,7 +35,8 @@ bspc monitor -d I
 xrdb ~/.Xresources
 xsetroot -cursor_name left_ptr& # Set the default cursor to pointer instead of X
 #hsetroot -solid '#2C3E50'
-feh --bg-fill ~/.wallpapers/mountains.jpg
+feh --bg-fill ~/.wallpapers/forest.jpg
+xinput disable "SynPS/2 Synaptics TouchPad"
 
 # Start dependencies
 #compton -b --sw-opti &
