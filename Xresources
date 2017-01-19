@@ -9,7 +9,7 @@ Xft.hintstyle: hintfull
 
 !!! ROFI !!!
 rofi.lines: 8
-rofi.font: Inconsolata 10
+rofi.font: krispy 8
 ! Colors
 rofi.color-enabled: true
 rofi.color-window: #2c3e50, #34495e, #34495e
@@ -29,10 +29,13 @@ rofi.kb-mode-previous: Left
 rofi.kb-cancel: Escape
 
 !!! URXVT !!!
+URxvt.title: URXVT
 URxvt.scrollBar: false
-URxvt.font: xft:RobotoMono:size=10
+URxvt.font: xft:RobotoMono:size=11
 URxvt.cursorBlink: true
 URxvt.internalBorder: 20
+URxvt.urgentOnBell: true
+Urxvt.borderLess: true
 ! Colors
 URxvt.foreground:  #E0E0E0
 URxvt.colorBD:     #E0E0E0
@@ -40,6 +43,12 @@ URxvt.colorIT:     #E0E0E0
 URxvt.colorUL:     #E0E0E0
 URxvt.background:  #2C3E50
 URxvt.cursorColor: #E0E0E0
+!URxvt.foreground:  #34495E
+!URxvt.colorBD:     #34495E
+!URxvt.colorIT:     #34495E
+!URxvt.colorUL:     #34495E
+!URxvt.background:  #F5F5F5
+!URxvt.cursorColor: #34495E
 ! 16 color space
 URxvt.color0:  #2C3E50
 URxvt.color1:  #E74C3C

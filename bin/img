@@ -6,8 +6,8 @@
 [[ ! -e "$1" ]] && echo "ERROR: Image does not exist!" && exit
 
 img_disp="/usr/lib/w3m/w3mimgdisplay"
-font_height=32 # Hardcoded, must be set manually
-font_width=15
+font_height=15 # Hardcoded, must be set manually
+font_width=9
 
 read width height <<< $(echo -e "5;$1" | $img_disp)
 

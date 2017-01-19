@@ -99,8 +99,8 @@ xkb_keycodes "evdev+aliases(qwerty)" {
     <KPEN> = 104;
     <RCTL> = 105;
     <KPDV> = 106;
-    <PRSC> = 134;
-    <RALT> = 107;
+    <PRSC> = 107;
+    <RALT> = 134;
     <LNFD> = 109;
     <HOME> = 110;
       <UP> = 111;

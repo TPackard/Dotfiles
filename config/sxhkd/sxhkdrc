@@ -28,8 +28,8 @@ super + {o,i}
 	bspc node {older,newer} -f; \
 	bspc wm --record-history on
 
-super + m
-	bspc node -s biggest
+#super + m
+	#bspc node -s biggest
 
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
@@ -97,6 +97,9 @@ super + shift + Return
 
 super + space
 	zsh -c "rofi -show run"
+
+Print
+	maim -s
 
 #
 # Sound controls

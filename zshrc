@@ -17,6 +17,7 @@ XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CONFIG_HOME
 
 export PATH="$PATH:$HOME/bin"
+export LD_LIBRARY_PATH="/usr/local/lib"
 
 # Use vi keybindings for zsh
 bindkey -v

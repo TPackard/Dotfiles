@@ -39,7 +39,7 @@ set backspace=indent,eol,start
 
 " Syntax coloring
 syntax on
-set background=dark
+set background=light
 let base16colorspace=256
 colorscheme base16-flat
 "set cursorline
@@ -53,11 +53,13 @@ hi TabLine ctermbg=0
 hi TabLineFill ctermbg=0
 hi TabLineSel ctermbg=0
 hi VertSplit ctermbg=18 ctermfg=18
+hi LineNr ctermbg=0 ctermfg=18
 
 " Invisibles
 set listchars=tab:▸\	,eol:¬
 
-"set number
+set number
+set numberwidth=1
 set nowrap
 
 set hidden
@@ -68,36 +70,10 @@ set splitright
 set splitbelow
 
 set incsearch
-"set hlsearch
+set nohlsearch
 
 " Default to list  mode in explorer
 let g:netrw_liststyle=1
-
-" Disable scrolling, because for some reason scrolling maps to arrow keys
-inoremap  <Up>     <NOP>
-inoremap  <Down>   <NOP>
-inoremap  <Left>   <NOP>
-inoremap  <Right>  <NOP>
-noremap   <Up>     <NOP>
-noremap   <Down>   <NOP>
-noremap   <Left>   <NOP>
-noremap   <Right>  <NOP>
-inoremap  <S-Up>     <NOP>
-inoremap  <S-Down>   <NOP>
-inoremap  <S-Left>   <NOP>
-inoremap  <S-Right>  <NOP>
-noremap   <S-Up>     <NOP>
-noremap   <S-Down>   <NOP>
-noremap   <S-Left>   <NOP>
-noremap   <S-Right>  <NOP>
-inoremap  <C-Up>     <NOP>
-inoremap  <C-Down>   <NOP>
-inoremap  <C-Left>   <NOP>
-inoremap  <C-Right>  <NOP>
-noremap   <C-Up>     <NOP>
-noremap   <C-Down>   <NOP>
-noremap   <C-Left>   <NOP>
-noremap   <C-Right>  <NOP>
 
 " set sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize"
 
