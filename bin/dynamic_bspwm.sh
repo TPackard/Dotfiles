@@ -47,14 +47,14 @@ function focus_index() {
 IFS=":"
 bspc subscribe | while read line; do
 	status_arr=(${$(bspc wm -g)})
-	if [[ $status_arr[-3] == "LM" ]]; then # Monocle
-		bspc config --desktop focused window_gap 0
+	if [[ $status_arr[-3] == "LM" ]]; then # If monocle
+		bspc config --desktop focused window_gap 0 # Remove window gaps
 	else
 		#dynamic_gaps
 		/home/tyler/bin/resize_desktops.sh
 	fi
 
-	if [[ "$(bspc query -d focused -N | wc -l)" == "1" ]]; then # Only one node in focused desktop
+	if [[ "$(bspc query -d focused -N | wc -l)" == "1" ]]; then # If only one node in focused desktop
 		bspc config focused_border_color "#2C3E50"
 		bspc config active_border_color "#2C3E50"
 	else
@@ -64,7 +64,7 @@ bspc subscribe | while read line; do
 
 	free_desktops=$(grep -oi ":f" <<< "$line" | wc -l) # Number of free desktops
 	if [[ $free_desktops -gt 1 ]]; then # If there are more than 1 free desktop, remove the extra desktops
-		bspc monitor -r $(bspc query -D -d 'next.!occupied')
+		bspc desktop $(bspc query -D -d 'next.!occupied') -r
 	elif [[ $free_desktops -eq 1 ]] && [[ $(free_index) != $(num_desktops) ]]; then # If there is only 1 free desktop but it isn't at the end, move it to the end
 		if [[ $(focus_index) == $(free_index) ]]; then
 			bspc desktop -f next

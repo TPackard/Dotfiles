@@ -2,27 +2,34 @@
 # bspwm hotkeys
 #
 
+# Quit BSPWM
 super + alt + Escape
 	bspc quit
 
 super + {_,shift + }w
 	bspc node -{c,k}
 
+# Toggle monocle mode
 super + m
 	bspc desktop -l next
 
+# IDEK, maybe restructure to full binary tree
 super + y
 	bspc query -N -n focused.automatic && bspc node -n last.!automatic || bspc node last.leaf -n focused
 
+# Switch window placment style
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
-super + {grave,Tab}
+# Switch between last active node/desktop
+super + {Tab,grave}
 	bspc {node,desktop} -f last
 
+# Switch window placement with last node
 super + apostrophe
 	bspc node -s last
 
+# Go through window focus history
 super + {o,i}
 	bspc wm --record-history off; \
 	bspc node {older,newer} -f; \
@@ -31,21 +38,28 @@ super + {o,i}
 #super + m
 	#bspc node -s biggest
 
+# Switch node placement in a given direction
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
+# Cycle through all nodes in a desktop
 super + {_,shift + }c
-	bspc node -f {next,prev}
+	bspc node -f {next.local,prev.local}
+alt + {_,shift + }Tab
+	bspc node -f {next.local,prev.local}
 
+# Cycle through desktops
 super + bracket{left,right}
 	bspc desktop -f {prev,next}
 
+# Switch destop with the previous one
 super + shift + bracketleft
 	bspc desktop -s prev; bspc desktop -f prev
 
+# Switch destop with the next one
 super + shift + bracketright
 	bspc desktop -s next; bspc desktop -f next
 

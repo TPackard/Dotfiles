@@ -16,7 +16,7 @@ compinit
 XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CONFIG_HOME
 
-export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/bin:$HOME/.cargo/bin"
 export LD_LIBRARY_PATH="/usr/local/lib"
 
 # Use vi keybindings for zsh
@@ -58,3 +58,5 @@ export QT_IM_MODULE=ibus
 
 export NVM_DIR="/home/tyler/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+eval $(thefuck --alias)

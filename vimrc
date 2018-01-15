@@ -15,8 +15,8 @@ call plug#begin()
 " Plug 'tpope/vim-repeat'
 " Plug 'tpope/vim-fugitive'
 
-" Plug 'wting/rust.vim'
-" Plug 'cespare/vim-toml'
+Plug 'wting/rust.vim'
+Plug 'cespare/vim-toml'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tikhomirov/vim-glsl'
 
@@ -30,12 +30,18 @@ filetype plugin indent on
 
 set autoread
 
-" Sessions
+" Persistent meta data
+set viminfo='250,f1,<100,s10,:250,/5,h
+
 nnoremap <leader>q :mksession! <CR> :qa <CR>
 nnoremap <leader>wq :wa <CR> :mksession! <CR> :qa <CR>
 nnoremap <leader>s :source Session.vim <CR> :1bd <CR> :noh <CR>
 
 set backspace=indent,eol,start
+
+" Tabs
+set tabstop=4
+set shiftwidth=4
 
 " Syntax coloring
 syntax on
