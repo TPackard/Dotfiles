@@ -7,15 +7,18 @@ Xft.hintstyle: hintfull
 !Xcursor.theme: Breeze
 !Xcursor.size: 24
 
+!!! COLORS !!!
+#include "projects/base16/output/xresources/xresources/base16-tylermode_light-256.Xresources"
+
 !!! ROFI !!!
 rofi.lines: 8
 rofi.font: krispy 8
 ! Colors
 rofi.color-enabled: true
-rofi.color-window: #2c3e50, #34495e, #34495e
-rofi.color-normal: #2c3e50, #e0e0e0, #2c3e50, #3498db, #2c3e50
-rofi.color-active: #2c3e50, #2ecc71, #2c3e50, #2ecc71, #e0e0e0
-rofi.color-urgent: #2c3e50, #e74c3c, #2c3e50, #e74c3c, #e0e0e0
+rofi.color-window: base00, base01, base01
+rofi.color-normal: base00, base05, base00, base0D, base00
+rofi.color-active: base00, base09, base00, base09, base05
+rofi.color-urgent: base00, base08, base00, base08, base05
 ! Options
 rofi.opacity: 100
 rofi.sidebar-mode: true
@@ -24,8 +27,8 @@ rofi.separator-style: solid
 rofi.ssh-command: {terminal} -e "{ssh-client} {host}"
 ! Keybindings
 rofi.key-run: SuperR+space
-rofi.kb-mode-next: Right
-rofi.kb-mode-previous: Left
+!rofi.kb-mode-next: Right
+!rofi.kb-mode-previous: Left
 rofi.kb-cancel: Escape
 
 !!! URXVT !!!
@@ -36,40 +39,3 @@ URxvt.cursorBlink: true
 URxvt.internalBorder: 20
 URxvt.urgentOnBell: true
 Urxvt.borderLess: true
-! Colors
-URxvt.foreground:  #E0E0E0
-URxvt.colorBD:     #E0E0E0
-URxvt.colorIT:     #E0E0E0
-URxvt.colorUL:     #E0E0E0
-URxvt.background:  #2C3E50
-URxvt.cursorColor: #E0E0E0
-!URxvt.foreground:  #34495E
-!URxvt.colorBD:     #34495E
-!URxvt.colorIT:     #34495E
-!URxvt.colorUL:     #34495E
-!URxvt.background:  #F5F5F5
-!URxvt.cursorColor: #34495E
-! 16 color space
-URxvt.color0:  #2C3E50
-URxvt.color1:  #E74C3C
-URxvt.color2:  #2ECC71
-URxvt.color3:  #F1C40F
-URxvt.color4:  #3498DB
-URxvt.color5:  #9B59B6
-URxvt.color6:  #1ABC9C
-URxvt.color7:  #E0E0E0
-URxvt.color8:  #95A5A6
-URxvt.color9:  #E74C3C
-URxvt.color10: #2ECC71
-URxvt.color11: #F1C40F
-URxvt.color12: #3498DB
-URxvt.color13: #9B59B6
-URxvt.color14: #1ABC9C
-URxvt.color15: #ECF0F1
-! 256 color space
-URxvt.color16: #E67E22
-URxvt.color17: #BE643C
-URxvt.color18: #34495E
-URxvt.color19: #7F8C8D
-URxvt.color20: #BDC3C7
-URxvt.color21: #F5F5F5

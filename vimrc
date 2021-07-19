@@ -6,15 +6,6 @@ autocmd!
 filetype off
 call plug#begin()
 
-" Plug 'bling/vim-airline'
-" Plug 'bling/vim-bufferline'
-" Plug 'edkolev/tmuxline.vim'
-
-" Plug 'airblade/vim-gitgutter'
-
-" Plug 'tpope/vim-repeat'
-" Plug 'tpope/vim-fugitive'
-
 Plug 'wting/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -40,17 +31,23 @@ nnoremap <leader>s :source Session.vim <CR> :1bd <CR> :noh <CR>
 set backspace=indent,eol,start
 
 " Tabs
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
 
 " Syntax coloring
 syntax on
 set background=light
 let base16colorspace=256
-colorscheme base16-flat
+colorscheme base16-tylermode_light
 "set cursorline
 
+" Statusline
 set laststatus=2
+highlight User1 ctermfg=8 ctermbg=18
+highlight User2 ctermfg=2 ctermbg=18
+set statusline=%1*[%n]%*\ %f\ %2*%m%1*%h%w%r%*%=%l%1*/%*%v\ -\ %P
 
 " Configure ui colors
 hi StatusLine ctermbg=18
@@ -59,14 +56,22 @@ hi TabLine ctermbg=0
 hi TabLineFill ctermbg=0
 hi TabLineSel ctermbg=0
 hi VertSplit ctermbg=18 ctermfg=18
-hi LineNr ctermbg=0 ctermfg=18
+hi LineNr ctermbg=0 ctermfg=19
+hi CursorLineNr ctermbg=0 ctermfg=3
 
 " Invisibles
 set listchars=tab:▸\	,eol:¬
 
 set number
+set rnu
 set numberwidth=1
 set nowrap
+
+"augroup numbertoggle
+"  autocmd!
+"  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+"  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+"augroup END
 
 set hidden
 set history=500

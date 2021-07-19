@@ -25,12 +25,16 @@ bindkey -v
 # Load colors
 autoload -U colors && colors
 
-# Set default editor to vim
-export VISUAL="vim"
-export EDITOR="vim"
+# Set default editor to nvim
+export VISUAL="nvim"
+export EDITOR="nvim"
 
 # Alias `suvim` to run vim under superuser while maintaining the same preferences
 alias suvim='sudo -E vim'
+
+# Alias vi to vim
+alias vi='nvim'
+alias suvi='sudo -E nvim'
 
 # Use colored commands
 alias ls='ls --color=auto'
@@ -38,7 +42,8 @@ alias grep='grep --color=auto'
 eval $(dircolors ~/.dircolors)
 
 # Fix colors for terminals that only support setting 16 colors
-BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-flat.sh"
+# FIXME: make portable
+BASE16_SHELL="$HOME/projects/base16/output/shell/scripts/base16-tylermode_light.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # Aliases
@@ -56,7 +61,13 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 
-export NVM_DIR="/home/tyler/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# Java
+export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
 
-eval $(thefuck --alias)
+# NVM
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# CS140E
+export CS140E_2021_PATH=/home/a3a/classes/e041sc/cs140e-21spr

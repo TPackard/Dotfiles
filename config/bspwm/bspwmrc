@@ -1,6 +1,6 @@
 #! /bin/sh
 
-bspc config border_width        0
+bspc config border_width        2
 bspc config window_gap         12
 
 bspc config split_ratio         0.5
@@ -8,40 +8,34 @@ bspc config leaf_monocle true
 bspc config borderless_monocle  true
 bspc config gapless_monocle     false
 bspc config focus_by_distance   true
-bspc config remove_disabled_monitor true
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
 bspc config click_to_focus true
 
 # Border colors
-bspc config focused_border_color "#34495E"
-bspc config active_border_color "#34495E"
-bspc config normal_border_color "#2C3E50"
-bspc config presel_feedback_color "#2ECC71"
-bspc config urgent_border_color "#E74C3C"
-bspc config focused_locked_border_color "#2ECC71"
-bspc config active_locked_border_color "#2ECC71"
-bspc config normal_locked_border_color "#2C3E50"
-bspc config focused_sticky_border_color "#9B59B6"
-bspc config active_sticky_border_color "#9B59B6"
-bspc config normal_sticky_border_color "#2C3E50"
-bspc config focused_private_border_color "#3498DB"
-bspc config active_private_border_color "#3498DB"
-bspc config normal_private_border_color "#2C3E50"
+bspc config focused_border_color "#CCCFED"
+bspc config active_border_color "#D7DBF7"
+bspc config normal_border_color "#D7DBF7"
+bspc config presel_feedback_color "#0077FF"
 
-# Padding for top bar
-bspc config top_padding 24
-
-bspc monitor -d I
+bspc monitor -d 0
 
 # Set non-bspwm settings
 xrdb ~/.Xresources
+xmodmap ~/.Xmodmap
 xsetroot -cursor_name left_ptr& # Set the default cursor to pointer instead of X
-xsetroot -solid '#34495E'
+xsetroot -solid '#E6EAFF'
 #feh --bg-fill ~/Photos/Ditch\ Day\ 1/kimono.jpg
 xinput disable "SynPS/2 Synaptics TouchPad"
+xbindkeys
+pactl load-module module-equalizer-sink
+pactl load-module module-dbus-protocol
+
+# Terminate running polybar instances
+killall -q polybar
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Start dependencies
-#compton -b --sw-opti &
-#exec yabar &
-exec /home/tyler/.config/polybar/launch.sh &
+exec polybar laptop &
 sxhkd &
-exec /home/tyler/bin/dynamic_bspwm.sh
+exec /home/a3a/bin/dynamic_bspwm.sh

@@ -5,7 +5,7 @@
 [[ -z "$1" ]] && echo "ERROR: No image provided!" && exit
 [[ ! -e "$1" ]] && echo "ERROR: Image does not exist!" && exit
 
-img_disp="/usr/libexec/w3m/w3mimgdisplay"
+img_disp="/usr/lib/w3m/w3mimgdisplay"
 font_height=15 # Hardcoded, must be set manually
 font_width=9
 
